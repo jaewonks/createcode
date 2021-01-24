@@ -32,6 +32,7 @@ def trans():
     end = request.args.get('end')
     print(str(start+':'+end))
     range_list = worksheet.range(str(start+':'+end))
+    cell_values = []
     for cell in range_list:
       # print(cell.value)
       text = cell.value
@@ -42,7 +43,12 @@ def trans():
       result = response.json()
       result1 = result['message']['result']['translatedText']
       print(result1.upper())
-    return result1.upper()
 
+      cell_values.append(result1.upper())
+      for i, val in enumerate(cell_values):  
+        range_list[i].value = val 
+        #range_list[i].col = 11 
+      worksheet.update_cells(range_list) 
+    return index()
 if __name__ == '__main__':
   application.run(host='0.0.0.0', port=5000)

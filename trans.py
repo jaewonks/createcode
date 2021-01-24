@@ -16,7 +16,8 @@ worksheet = doc.worksheet('createcode')
 # a 시트 불러오기,cell_data = worksheet.acell('C2').value
 
 request_url = "https://openapi.naver.com/v1/papago/n2mt"
-range_list = worksheet.range('C401:C402')
+rangeInfo = 'C401:C402'
+range_list = worksheet.range(rangeInfo)
 cell_values = []
 for cell in range_list:
    # print(cell.value)
@@ -29,9 +30,12 @@ for cell in range_list:
    result1 = result['message']['result']['translatedText']
    print(result1.upper())
    cell_values.append(result1.upper())
-
-   for i, val in enumerate(cell_values):  #gives us a tuple of an index and value
-      range_list[i].value = val    #use the index on cell_list and the val from cell_values
-   print(range_list[0])  
-   worksheet.update_cells(range_list)
+   for i, val in enumerate(cell_values):  
+      range_list[i].value = val   
+      # print(range_list[i].col)
+      # range_list[i].col = 11
+   # print(3, type(range_list)) # list
+   # print(4, dir(range_list[0])) # gspread.models.Cell
+   worksheet.update_cells(range_list) 
+  
 
