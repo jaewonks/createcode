@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  height: 100vh; 
+  font: 20px Raleway, sans-serif;
+  margin: 30px;
+}
+input {
+  width: 50px;
+}
+button {
+  background-color: #e9ff70;
+  font: 18px Raleway, sans-serif bold;
+  width: 150px;
+  height: 30px;
+  border: none;
+}
+.grid-container{
+  display: grid;
+  grid-template-areas:
+  'main' 'footer';
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 160px; 
+  /* 속성값으로 1fr을 주먼 고정 픽셀을 제외한 나머지 공간을 다 차지함 */
+  height: 100%;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  margin-top: 80px;;
+  color: #454545;
+}
